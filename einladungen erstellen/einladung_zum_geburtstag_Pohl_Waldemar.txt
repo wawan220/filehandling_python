@@ -1,0 +1,18 @@
+Aufgabe: 
+erstelle eine automatisierte einladung die alle
+in einer txt datei hinterlägten personnen anspricht und 
+den namen in die einladung als auch in den dateinamen einfügt.
+
+Einladung
+Ich lade dich (Pohl Waldemar),recht Herzlich ein
+mit mir auf meinen Geburtstag anzustossen
+
+Ich moechte meinen Geburtstag 
+am	03.12.2025
+um	18:00 Uhrfeiern.
+
+es ist reichlich fuers Essen und Trinken gesorgt.
+man darf auch mit begleitung erscheinen
+
+bitte antworde mir nur kurz ob du kommst und mit wievielen errsonnen als begleitung.
+ich freue mich schon auf die wilde Sause mit dir.
