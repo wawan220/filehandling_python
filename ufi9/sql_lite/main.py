@@ -45,12 +45,18 @@ import sqlite3
 
 connection= sqlite3.connect("todo_list.db")
 cursor=connection.cursor()
-sql_anweisung="CREATE TABLE todos(" \
-               "TodoID INTEGER PRIMARY KEY AUTOINCREMENT," \
-               "Todoname TEXT," \
-               "DueDate DATE," \
-               "Status TEXT" \
-               ")"
+#sql_anweisung="CREATE TABLE todos(" \
+#               "TodoID INTEGER PRIMARY KEY AUTOINCREMENT," \
+#               "Todoname TEXT," \
+#               "DueDate DATE," \
+#               "Status TEXT" \
+#               ")"
+
+sql_anweisung=f"INSERT INTO todos(" \
+                f"Todoname, DueDate, Status)" \
+                f"VALUES(" \
+                f"'{input("gebe Todoname: \n> ")}', '{input("gebe DueDate: \n> ")}', '{input("gebe Status: \n> ")}' )"
+
 cursor.execute(sql_anweisung)
 connection.commit()
 connection.close()
