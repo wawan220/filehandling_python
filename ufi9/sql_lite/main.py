@@ -50,8 +50,6 @@ print("was möchtest du machen: \n (1) Todoliste ausgeben \n (2) Todos eingeben 
 option= int(input("gebe deine wahl ein: \n> "))
 
 
-
-
 connection= sqlite3.connect("todo_list.db")
 cursor=connection.cursor()
 
