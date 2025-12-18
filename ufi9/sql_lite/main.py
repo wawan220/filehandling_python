@@ -52,11 +52,22 @@ cursor=connection.cursor()
 #               "Status TEXT" \
 #               ")"
 
-sql_anweisung=f"INSERT INTO todos(" \
-                f"Todoname, DueDate, Status)" \
-                f"VALUES(" \
-                f"'{input("gebe Todoname: \n> ")}', '{input("gebe DueDate: \n> ")}', '{input("gebe Status: \n> ")}' )"
+#sql_anweisung=f"INSERT INTO todos(" \
+#                f"Todoname, DueDate, Status)" \
+#                f"VALUES(" \
+#                f"'{input("gebe Todoname: \n> ")}', '{input("gebe DueDate: \n> ")}', '{input("gebe Status: \n> ")}' )"
 
-cursor.execute(sql_anweisung)
+sql_anweisung_update="UPDATE todos SET Status = 'erledigt' WHERE TodoID == 3"
+
+sql_anweisung_ausgabe="SELECT * FROM todos"
+cursor.execute(sql_anweisung_ausgabe)
+
+for datensatz in cursor:
+   print( str(datensatz[0])  +" "+ #TodoID
+          str(datensatz[1])  +" "+ #Todoname
+          str(datensatz[2])  +" "+ #DueDate
+          str(datensatz[3])  +"\n") #Status
+         
+
 connection.commit()
 connection.close()
