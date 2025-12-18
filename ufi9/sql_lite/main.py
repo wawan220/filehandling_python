@@ -43,8 +43,18 @@ import sqlite3
 #connection.commit()
 #connection.close()
 
+#-------------------------------------------------------------
+
+
+print("was möchtest du machen: \n (1) Todoliste ausgeben \n (2) Todos eingeben \n (3) Todos updaten \n (4) Eintrag löschen")
+option= int(input("gebe deine wahl ein: \n> "))
+
+
+
+
 connection= sqlite3.connect("todo_list.db")
 cursor=connection.cursor()
+
 #sql_anweisung="CREATE TABLE todos(" \
 #               "TodoID INTEGER PRIMARY KEY AUTOINCREMENT," \
 #               "Todoname TEXT," \
@@ -52,22 +62,36 @@ cursor=connection.cursor()
 #               "Status TEXT" \
 #               ")"
 
-#sql_anweisung=f"INSERT INTO todos(" \
-#                f"Todoname, DueDate, Status)" \
-#                f"VALUES(" \
-#                f"'{input("gebe Todoname: \n> ")}', '{input("gebe DueDate: \n> ")}', '{input("gebe Status: \n> ")}' )"
+if option==1:
+    sql_anweisung_ausgabe="SELECT * FROM todos"
+    cursor.execute(sql_anweisung_ausgabe)
 
-sql_anweisung_update="UPDATE todos SET Status = 'erledigt' WHERE TodoID == 3"
-
-sql_anweisung_ausgabe="SELECT * FROM todos"
-cursor.execute(sql_anweisung_ausgabe)
-
-for datensatz in cursor:
-   print( str(datensatz[0])  +" "+ #TodoID
-          str(datensatz[1])  +" "+ #Todoname
-          str(datensatz[2])  +" "+ #DueDate
-          str(datensatz[3])  +"\n") #Status
+    for datensatz in cursor:
+        print( str(datensatz[0])  +" "+ #TodoID
+                str(datensatz[1])  +" "+ #Todoname
+                str(datensatz[2])  +" "+ #DueDate
+                str(datensatz[3])  +"\n") #Status
          
+elif option==2:
+    sql_anweisung_eingabe=f"INSERT INTO todos(" \
+                    f"Todoname, DueDate, Status)" \
+                    f"VALUES(" \
+                    f"'{input("gebe Todoname: \n> ")}', '{input("gebe DueDate: \n> ")}', '{input("gebe Status: \n> ")}' )"
+    cursor.execute(sql_anweisung_eingabe)
+
+elif option==3:
+    update_input_key=input("was möchtest du verändern? Todoname, DueDate, Status \n> ")
+    update_datensatz=input("Welche ID möchtest dus ändern? \n> ")
+    Update_input_value=input("was soll eingetragen werden? \n>")
+    sql_anweisung_update=f"UPDATE todos SET {update_input_key} = '{Update_input_value}' WHERE TodoID == {update_datensatz}"
+    cursor.execute(sql_anweisung_update)
+elif option==4:
+    delete_datensatz=input("Welchen ID möchtest du löschen \n> ")
+    sql_anweisung_delete=f"DELETE FROM todos WHERE TodoID == {delete_datensatz}"
+    cursor.execute(sql_anweisung_delete)
+    print(f"der eintrag mit ID : {delete_datensatz} wurde gelöscht!" )
+else:
+    print("eingabe ungültig")
 
 connection.commit()
 connection.close()
