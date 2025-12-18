@@ -28,6 +28,8 @@ sql_anweisung4=f"INSERT INTO Person(" \
                 f"'{input("gebe Name: \n> ")}', '{input("gebe Vorname: \n> ")}', {float(input("gebe Groesse: \n> "))}, {float(input("gebe Gewicht: \n> "))}, '{input("gebe Geburtsdatum: \n> ")}' , {input("gebe OrtID: \n> ")} )"
 
 
+
+
 cursor.execute(sql_anweisung4)
 connection.commit()
 connection.close()
